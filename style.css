@@ -1,0 +1,245 @@
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
+body {
+  margin:0;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+}
+p {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: #333333;
+}
+
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color:white;
+}
+.logo {
+  width:50px;
+  fill:white;
+  padding-right:15px;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+.inner-header {
+  height:65vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+
+.flex { /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.waves {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
+
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
+}
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
+}
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  height: 50vh;
+  justify-content: center;
+}
+
+.player-controls {
+  color: #FFF;
+  cursor: pointer;
+  display: block;
+  font-size: 40px;
+  height: 1em;
+  position: relative;
+  text-decoration: none;
+  width: 1em;
+  -webkit-transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+}
+.player-controls .audio-label {
+  line-height: 1;
+  position: absolute;
+  right: 1.35em;
+  text-align: right;
+  text-transform: uppercase;
+  top: -0.4em;
+}
+.player-controls .audio-label span {
+  font-size: 18px;
+}
+.player-controls .audio-label span small {
+  display: block;
+  font-size: 0.83em;
+}
+.player-controls .play,
+.player-controls .pause {
+  display: block;
+  background: url('https://www.dropbox.com/s/aukpnwpj8b77tqy/play.svg?raw=1') no-repeat 0 0;
+  background-size: 100% 100%;
+  height: 1em;
+  position: absolute;
+  width: 1em;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  z-index: 5;
+}
+.player-controls .play::before,
+.player-controls .pause::before,
+.player-controls .play::after,
+.player-controls .pause::after {
+  -webkit-border-radius: 1000px;
+  -moz-border-radius: 1000px;
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  height: 1em;
+  right: 0;
+  top: 0;
+  width: 1em;
+  z-index: 0;
+}
+.player-controls .play::before {
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+.player-controls .pause {
+  background-image: url('https://www.dropbox.com/s/ev272i742j9ugvv/pause.svg?raw=1');
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+.player-controls.playing .play {
+  opacity: 0;
+}
+.player-controls.playing .pause {
+  opacity: 1;
+}
+.player-controls.playing .pause::before {
+  -moz-animation: audio1 1.5s infinite ease-in-out;
+  -o-animation: audio1 1.5s infinite ease-in-out;
+  -webkit-animation: audio1 1.5s infinite ease-in-out;
+  animation: audio1 1.5s infinite ease-in-out;
+}
+.player-controls.playing .pause::after {
+  -moz-animation: audio2 2.2s infinite ease-in-out;
+  -o-animation: audio2 2.2s infinite ease-in-out;
+  -webkit-animation: audio2 2.2s infinite ease-in-out;
+  animation: audio2 2.2s infinite ease-in-out;
+}
+.player-controls:hover {
+  transform: scale(1.1);
+}
+.player-controls:hover .play::before {
+  box-shadow: 0 0 12px rgba(255, 238, 125, 0.8);
+}
+.animate-audio1 {
+  -moz-animation: audio1 1.5s infinite ease-in-out;
+  -o-animation: audio1 1.5s infinite ease-in-out;
+  -webkit-animation: audio1 1.5s infinite ease-in-out;
+  animation: audio1 1.5s infinite ease-in-out;
+}
+@keyframes audio1 {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0.4em rgba(255, 255, 255, 0.4);
+  }
+  25% {
+    box-shadow: 0 0 0 0.15em rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 0.55em rgba(255, 255, 255, 0.55);
+  }
+  75% {
+    box-shadow: 0 0 0 0.25em rgba(255, 255, 255, 0.25);
+  }
+}
+.animate-audio2 {
+  -moz-animation: audio2 2.2s infinite ease-in-out;
+  -o-animation: audio2 2.2s infinite ease-in-out;
+  -webkit-animation: audio2 2.2s infinite ease-in-out;
+  animation: audio2 2.2s infinite ease-in-out;
+}
+@keyframes audio2 {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0.25em rgba(255, 255, 255, 0.15);
+  }
+  25% {
+    box-shadow: 0 0 0 0.4em rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 0.15em rgba(255, 255, 255, 0.05);
+  }
+  75% {
+    box-shadow: 0 0 0 0.55em rgba(255, 255, 255, 0.45);
+  }
+}
