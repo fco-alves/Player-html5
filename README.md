@@ -1,2 +1,6 @@
 # Player-html5
-Player html5 personalizado
+
+<h2>Player html 5 personalizado</h2>
+<p>
+  Link do tutorial: https://fco-alves.github.io/Player-html5/
+</p>
